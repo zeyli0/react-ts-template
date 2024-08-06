@@ -15,14 +15,17 @@
         "isolatedModules": true,
         "moduleDetection": "force",
         "noEmit": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
 
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "baseUrl": "."
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"]
 }

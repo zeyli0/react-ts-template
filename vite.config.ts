@@ -1,11 +1,10 @@
-import { ConfigEnv, defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
+import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite'
 
-import { wrapperEnv, createProxy } from './src/vite'
+import { wrapperEnv, createProxy, createPlugins } from './src/vite'
 import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }: ConfigEnv) => {
+export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     const root = process.cwd()
     const env = loadEnv(mode, root)
     const viteEnv = wrapperEnv(env)
@@ -34,6 +33,6 @@ export default defineConfig(({ mode }: ConfigEnv) => {
                 }
             }
         },
-        plugins: [react()]
+        plugins: createPlugins()
     }
 })

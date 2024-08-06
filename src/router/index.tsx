@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 
 import Login from '@/pages/login'
@@ -8,6 +8,10 @@ const About = lazy(() => import('@/pages/about'))
 const routeConfig = [
     {
         path: '/',
+        element: <Navigate to='/home' />
+    },
+    {
+        path: '/home',
         element: <Home />
     },
     {
@@ -28,7 +32,7 @@ const routeConfig = [
     }
 ]
 
-const router = createBrowserRouter(routeConfig)
+const router = createHashRouter(routeConfig)
 const Routes = () => {
     return <RouterProvider router={router} />
 }

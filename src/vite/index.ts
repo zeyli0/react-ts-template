@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ProxyOptions } from 'vite'
-
+import react from '@vitejs/plugin-react'
+import legacy from '@vitejs/plugin-legacy'
 declare type Recordable<T = string> = Record<string, T>
 declare interface ViteEnv {
     VITE_PORT: number
@@ -66,4 +67,14 @@ export function createProxy(list: ProxyList = []) {
         }
     }
     return ret
+}
+
+export function createPlugins() {
+    const plugins = [
+        react(),
+        legacy({
+            targets: ['defaults', 'not IE 11']
+        })
+    ]
+    return plugins
 }
